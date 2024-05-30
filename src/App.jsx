@@ -64,11 +64,12 @@ function App() {
   const handleToggleTodo = (id) => {
     setTodos(
       todos.map((todo) => {
-        todo.id === id ? {...todo, completed: !todo.completed} : todo
+        return todo.id === id ? {...todo, completed: !todo.completed} : todo
+        
       })
     )
   }
-
+ console.log(todos)
   return (
     <>
       <form onSubmit={onSubmit}>
@@ -108,7 +109,7 @@ function App() {
       <ul>
         {todos.map((todo) => {
           return(
-            <li key={todo.id} style={{textDecoration: todo.completed ? 'line-though' : 'none'}}>
+            <li key={todo.id} style={{textDecoration: todo.completed ? 'line-through' : 'none'}}>
               {todo.text}
               <button onClick={() => handleToggleTodo(todo.id)}>{todo.completed ? '취소' : '완료'}</button>
               <button onClick={() => handleDeleteTodo(todo.id)}>삭제</button>
